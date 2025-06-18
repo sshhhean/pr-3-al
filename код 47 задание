@@ -1,0 +1,48 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class SnakePattern {
+
+    public static List<Integer> snail(int[][] array) {
+        List<Integer> result = new ArrayList<>();
+        int top = 0, bottom = array.length - 1;
+        int left = 0, right = array[0].length - 1;
+
+        while (top <= bottom && left <= right) {
+            for (int i = left; i <= right; i++) result.add(array[top][i]);
+            top++;
+
+            for (int i = top; i <= bottom; i++) result.add(array[i][right]);
+            right--;
+
+            if (top <= bottom) {
+                for (int i = right; i >= left; i--) result.add(array[bottom][i]);
+                bottom--;
+            }
+
+            if (left <= right) {
+                for (int i = bottom; i >= top; i--) result.add(array[i][left]);
+                left++;
+            }
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        int[][] array1 = {
+            {1, 2, 3},
+            {4, 5, 6},
+            {7, 8, 9}
+        };
+
+        int[][] array2 = {
+            {1, 2, 3},
+            {8, 9, 4},
+            {7, 6, 5}
+        };
+
+        System.out.println(snail(array1)); 
+        System.out.println(snail(array2)); 
+    }
+}
