@@ -1,0 +1,30 @@
+public class FuscIterative {
+
+    public static int fusc(int n) {
+        int a = 0;
+        int b = 1;
+
+        while (n > 0) {
+            if (n % 2 == 0) {
+                b = a;
+            } else {
+                b = a + b;
+                a = b - a;
+            }
+            n /= 2;
+        }
+
+        return a;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(fusc(0)); // 0
+        System.out.println(fusc(1)); // 1
+        System.out.println(fusc(2)); // 0
+        System.out.println(fusc(3)); // 1
+        System.out.println(fusc(4)); // 0
+        System.out.println(fusc(5)); // 1
+        System.out.println(fusc(6)); // 1
+        System.out.println(fusc(7)); // 2
+    }
+}
